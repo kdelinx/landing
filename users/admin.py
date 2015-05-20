@@ -7,7 +7,9 @@ from users.forms import UserCreateForm
 
 class RUserAdmin(UserAdmin):
     form = UserCreateForm
-    ## TODO Add admin forms
+    # TODO Add admin forms
+    # To do Add admin forms
+    # and fix to do
 
 # admin.site.register()
 admin.site.unregister(Group)
