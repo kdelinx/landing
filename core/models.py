@@ -54,5 +54,5 @@ class Landing():
         max_length=150,
     )
     visitDomain = models.URLField(
-        
+
     )

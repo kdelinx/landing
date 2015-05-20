@@ -1,3 +1,12 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import Group
+from users.forms import UserCreateForm
 
-# Register your models here.
+
+
+class RUserAdmin(UserAdmin):
+    form = UserCreateForm
+
+admin.site.register()
+admin.site.unregister(Group)
