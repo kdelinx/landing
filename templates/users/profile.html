@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block base_body %}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            Email: {{ profile.email }} <br />
+            Name: {{ profile.login }} <br />
+            IP: {{ profile.latest_ip }} <br />
+            {% if user.is_superuser %}
+                <i>I am Admin!</i> <br>
+            {% endif %}
+            {{ logs.log }}
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

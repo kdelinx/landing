@@ -8,9 +8,8 @@ def page_404(request):
 
 def index(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect(
-            reverse('users:profile')
-        )
+        return HttpResponseRedirect(reverse('users:profile'))
+    return render(request, 'core/index.html')
 
 
 def tos(request):

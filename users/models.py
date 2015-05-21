@@ -1,6 +1,5 @@
 #coding: utf-8
 from django.db import models
-from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
 from users.managers import UserManager
@@ -24,9 +23,9 @@ class User(AbstractBaseUser, PermissionsMixin):
         default=True,
     )
     last_activity = models.DateField(
-        default=timezone.now()
+        auto_now_add=True,
     )
-    latest_ip = models.IPAddressField(
+    latest_ip = models.GenericIPAddressField(
         default=0,
     )
 

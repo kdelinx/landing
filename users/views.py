@@ -12,6 +12,7 @@ from users.forms import UserCreateForm
 from django.db.models import Count, Sum
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.template import RequestContext
 
 
 @login_required
