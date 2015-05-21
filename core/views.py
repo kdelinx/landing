@@ -32,3 +32,8 @@ def landing(request):
         'userCount': User.objects.all()
     }
     return render(request, 'core/stat.html', context)
+
+
+def importFromCSV(request):
+    pass
+    # TODO function for parse VCS
