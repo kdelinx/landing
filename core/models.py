@@ -2,7 +2,8 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-class Landing():
+
+class Landing(models.Model):
     domen = models.CharField(
         _('Domain'),
         max_length=255,
@@ -53,6 +54,57 @@ class Landing():
         _('Domain for visit'),
         max_length=150,
     )
-    visitDomain = models.URLField(
-
+    visitDomain = models.CharField(
+        _('Domain visit from coockie'),
+        max_length=125,
     )
+    piwik = models.BooleanField(
+        default=False,
+    )
+    piwikNumber = models.SmallIntegerField(
+        _('Number of piwik'),
+        default=0,
+    )
+    logoId = models.BooleanField(
+        _('Logo ID'),
+        default=False,
+    )
+    freeAmmount = models.BooleanField(
+        _('Free ammount field'),
+        default=False,
+    )
+    bonus = models.BooleanField(
+        _('Bonus'),
+        default=False,
+    )
+    bonus2 = models.BooleanField(
+        _('Bonus2'),
+        default=False,
+    )
+    bonus3 = models.BooleanField(
+        _('Bonus3'),
+        default=False,
+    )
+    currency = models.BooleanField(
+        _('Currency'),
+        default=False,
+    )
+    liveChat = models.BooleanField(
+        _('Live chat function'),
+        default=False,
+    )
+    serverPathFile = models.CharField(
+        _('Server file path'),
+        max_length=255,
+    )
+    regForm = models.BooleanField(
+        _('Registration forms'),
+        default=False,
+    )
+
+    class Meta:
+        verbose_name = _('Landing')
+        verbose_name_plural = _('Landings')
+
+    def __unicode__(self):
+        return self.domen

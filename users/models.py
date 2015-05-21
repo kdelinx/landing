@@ -39,10 +39,8 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name = _(u'Пользователь')
         verbose_name_plural = _(u'Пользователи')
 
-
     def __unicode__(self):
         return self.login
-
 
     def has_perm(self, perm, obj=None):
         return True

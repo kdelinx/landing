@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('login', models.CharField(unique=True, max_length=150, verbose_name='Login')),
                 ('is_active', models.BooleanField(default=True)),
                 ('is_admin', models.BooleanField(default=True)),
-                ('last_activity', models.DateField(default=datetime.datetime(2015, 5, 20, 11, 9, 43, 520857, tzinfo=utc))),
+                ('last_activity', models.DateField(default=datetime.datetime(2015, 5, 21, 7, 7, 37, 933377, tzinfo=utc))),
                 ('latest_ip', models.IPAddressField(default=0)),
                 ('groups', models.ManyToManyField(related_query_name='user', related_name='user_set', to='auth.Group', blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of his/her group.', verbose_name='groups')),
                 ('user_permissions', models.ManyToManyField(related_query_name='user', related_name='user_set', to='auth.Permission', blank=True, help_text='Specific permissions for this user.', verbose_name='user permissions')),
