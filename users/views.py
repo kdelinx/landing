@@ -32,3 +32,7 @@ def otherProfile(request, id):
         'logs': Log.objects.filter(user=profile.id)[:5]
     }
     return render(request, 'users/profile.html', context)
+
+
+def register(request):
+    pass
