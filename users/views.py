@@ -35,5 +35,18 @@ def otherProfile(request, id):
     return render(request, 'users/profile.html', context)
 
 
-def register(request):
-    pass
+def register(request, template_name='users/register.html',
+             form=UserCreateForm, autologin=True):
+    form = form(request.POST or None)
+    if form.is_valid():
+        form.save()
+        if autologin:
+            username = form.cleaned_data['login']
+            password = form.cleaned_data['password2']
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            messages.add_message(request, messages.SUCCESS, 'Successful! You are a new user!')
+            return HttpResponseRedirect(reverse('users:profile'))
+        else:
+            return HttpResponseRedirect(reverse('index'))
+    return render(request, template_name, {'form': form})

@@ -1,0 +1,58 @@
+{% extends 'base/ui.html' %}
+{% block title %}Registration{% endblock %}
+{% block content %}
+
+ <div class="uk-width-1-1">
+        <form class="uk-form contact-form" action="" method="post">
+            {{ form.non_field_errors }}
+            {% csrf_token %}
+            <div class="uk-grid uk-grid-preserve" data-uk-grid-margin>
+                <div class="uk-width-1-1">
+                    <div class="uk-form-row uk-margin-large">
+                        {{ form.email.errors }}
+                        <div class="uk-form-icon uk-width-1-2">
+                            <i class="uk-icon-at"></i>
+                            <input type="text" name="email" class="uk-width-1-1 uk-form-large" placeholder="Email">
+                        </div>
+                        <span class="uk-form-help-inline">Enter your Email address</span>
+                    </div>
+                </div>
+                <div class="uk-width-1-1">
+                    <div class="uk-form-row uk-margin-large">
+                        {{ form.login.errors }}
+                        <div class="uk-form-icon uk-width-1-2">
+                            <i class="uk-icon-user-md"></i>
+                            <input type="text" name="login" class="uk-width-1-1 uk-form-large" placeholder="Login">
+                        </div>
+                        <span class="uk-form-help-inline">Here your login</span>
+                    </div>
+                </div>
+                <div class="uk-width-1-1">
+                    <div class="uk-form-row uk-margin-large">
+                        {{ form.password1.errors }}
+                        <div class="uk-form-icon uk-width-1-2">
+                            <i class="uk-icon-lock"></i>
+                            <input type="password" class="uk-width-1-1 uk-form-large" name="password1" placeholder="Password">
+                        </div>
+                        <span class="uk-form-help-inline">Here your password</span>
+                    </div>
+                </div>
+                <div class="uk-width-1-1">
+                    <div class="uk-form-row uk-margin-large">
+                        {{ form.password2.errors }}
+                        <div class="uk-form-icon uk-width-1-2">
+                            <i class="uk-icon-lock"></i>
+                            <input type="password" class="uk-width-1-1 uk-form-large" name="password2" placeholder="Re-enter password">
+                        </div>
+                        <span class="uk-form-help-inline">Here re-enter your password</span>
+                    </div>
+                </div>
+                <div class="uk-width-1-1 uk-margin-large">
+                    <div class="uk-form-row uk-margin-large">
+                        <button class="uk-button uk-button-success uk-button-large uk-text-large uk-width-1-2">Registration</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
