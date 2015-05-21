@@ -1,0 +1,33 @@
+{% load static %}
+<nav class="uk-navbar">
+    <div class="uk-container uk-container-center">
+        <div class="uk-grid">
+            <div class="uk-width-1-1">
+                <a class="uk-navbar-brand uk-visible-large" href="/"><img src="{% static 'img/logo.png' %}" class="uk-responsive-height" alt=""/></a>
+                <div class="uk-navbar-flip">
+                    {% if user.is_authenticated %}
+                        <ul class="uk-list">
+                        <!-- TODO Insert link -->
+                            <li><a href=""><div class="uk-icon-medium uk-icon-user"></div>Profile</a></li>
+                            <li><a href=""><div class="uk-icon-medium uk-icon-user"></div>Statistic</a></li>
+                            <li><a href=""><div class="uk-icon-medium uk-icon-user"></div>Import CVS</a></li>
+                            <li><a href=""><div class="uk-icon-medium uk-icon-user"></div>Logout</a></li>
+                        </ul>
+                    {% else %}
+                        <div class="uk-navbar-content uk-hidden-small">
+                            <form action="{% url 'login' %}" method="POST" class="uk-form uk-margin-remove uk-display-inline-block">
+                                {% csrf_token %}
+                                <input name="username" type="text" placeholder="Login">
+                                <input name="password" type="password" placeholder="Password">
+                                <div class="uk-button-group">
+                                    <button class="uk-button uk-button-primary" type="submit">Login</button>
+                                    <a href="{% url 'register' %}" class="uk-button uk-button-success">Registration</a>
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

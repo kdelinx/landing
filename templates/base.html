@@ -1,0 +1,55 @@
+{% load static %}
+{% load compress %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Landing static"/>
+    <title>
+        {% block title %}
+            Statistic landing page
+        {% endblock %}
+    </title>
+    {% compress css %}
+        <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
+    {% endcompress %}
+    {% compress js %}
+        <script src="{% static 'js/uikit.min.js' %}"></script>
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+        <script src="{% static 'js/modernizr.js' %}"></script>
+        <script src="{% static 'js/components/notify.min.js' %}"></script>
+        <script src="{% static 'js/components/grid.min.js' %}"></script>
+    {% endcompress %}
+</head>
+<body>
+{% include 'meta/header.html' %}
+
+{% if messages %}
+<div class="uk-container uk-container-center uk-margin-top">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            {% for message in messages %}
+                {% if message.tags %}
+                <div class="uk-alert {{ message.tags }}" data-uk-alert>
+                    <a href="" class="uk-alert-close uk-close"></a>
+                    <p>{{ message }}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% block wrap %}
+
+{% endblock %}
+
+{% block footer %}
+    <div class="uk-container uk-container-center uk-margin-large-top">
+        {% include 'meta/footer.html' %}
+    </div>
+{% endblock %}
+</body>
+</html>

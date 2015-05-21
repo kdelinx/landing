@@ -1,5 +1,6 @@
 #coding: utf-8
 from django.db import models
+from users.models import User
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -108,3 +109,17 @@ class Landing(models.Model):
 
     def __unicode__(self):
         return self.domen
+
+
+class Log(models.Model):
+    user = models.ForeignKey(User)
+    log = models.TextField(
+        _('Action listing'),
+    )
+
+    class Meta:
+        verbose_name = _('Logging')
+        verbose_name_plural = _('Loggings')
+
+    def __unicode__(self):
+        return self.user
