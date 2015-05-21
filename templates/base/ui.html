@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block base_body %}
+
+<div class="uk-container-center uk-container uk-margin-large-top">
+    <div class="uk-grid uk-grid-medium" data-uk-grid-margin>
+        {% block main-content %}
+            <div class="uk-width-1-1">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        {% endblock main-content %}
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} About static {% endblock %}
+{% block base_body %}
+
+<div class="uk-container-center uk-container">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            <img src="{% static 'img/about.png' %}" class="uk-align-center">
+            <hr>
+<b>History</b>
+            <p class="uk-text-center">
+                The quest to make knowledge computable has a long and distinguished history.
+                Indeed, when computers were first imagined, it was almost taken for granted that they would eventually have the kinds of question-answering capabilities that we now begin to see in <b><i>Wolfram|Alpha</i></b>. See timeline »
+                What has now made <b><i>Wolfram|Alpha</i></b> possible today is a somewhat unique set of circumstances—and the singular vision of Stephen Wolfram.
+                For the first time in history, we have computers that are powerful enough to support the capabilities of <b><i>Wolfram|Alpha</i></b>, and we have the web as a broad-based means of delivery. But this technology alone was not enough to make <b><i>Wolfram|Alpha</i></b> possible.
+                What was needed were two developments that have been driven by Stephen Wolfram over the course of nearly 30 years.
+            </p>
+<b>Wolfram Mathematica</b>
+            <p class="uk-text-center">
+                The first was Mathematica—the system in which all of Wolfram|Alpha is implemented. Mathematica has three crucial roles in Wolfram|Alpha. First, its very general symbolic language provides the framework in which all the diverse knowledge of Wolfram|Alpha is represented and all its capabilities are implemented.
+                Second, Mathematica's vast web of built-in algorithms provides the computational foundation that makes it even conceivably practical to implement the methods and models of so many fields. And finally, the strength of Mathematica as a software engineering and deployment platform makes it possible to take the technical achievements of <b><i>Wolfram|Alpha</i></b> and deliver them broadly and robustly.
+            </p>
+<b>A New Kind of Science</b>
+            <p class="uk-text-center">
+                Beyond Mathematica, another key to <b><i>Wolfram|Alpha</i></b> was A New Kind of Science (NKS). Many specific ideas from NKS—particularly related to algorithms discovered by exploring the computational universe—are used in the implementation of <b><i>Wolfram|Alpha</i></b>. But still more important is that the very paradigm of NKS was crucial in imagining that <b><i>Wolfram|Alpha</i></b> might be possible.
+                <b><i>Wolfram|Alpha</i></b> represents a substantial technical and intellectual achievement. But to build it required not just unique technology and ideas, but also the experience of 20 years of long-term R&D and ongoing development of robust technology at Wolfram Research.
+                <b><i>Wolfram|Alpha</i></b>'s world-class team draws from many fields and disciplines and has unique access to experts across the globe. But what ultimately made Wolfram|Alpha possible was a singular commitment to the goal of making all the world's systematic knowledge computable.
+            </p>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
