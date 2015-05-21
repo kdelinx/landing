@@ -1,4 +1,7 @@
-from django.shortcuts import render, HttpResponseRedirect
+#coding: utf-8
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from users.models import User
+from core.models import Landing
 from django.core.urlresolvers import reverse
 
 
@@ -24,4 +27,8 @@ def about(request):
 
 
 def landing(request):
-    pass
+    context = {
+        'landing': Landing.objects.all(),
+        'userCount': User.objects.all()
+    }
+    return render(request, 'core/stat.html', context)

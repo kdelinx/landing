@@ -8,10 +8,10 @@
                     {% if user.is_authenticated %}
                         <ul class="uk-list">
                         <!-- TODO Insert link -->
-                            <li><a href="{% url 'users:profile' %}"><div class="uk-icon-medium uk-icon-user"></div>Profile</a></li>
-                            <li><a href=""><div class="uk-icon-medium uk-icon-user"></div>Statistic</a></li>
-                            <li><a href=""><div class="uk-icon-medium uk-icon-user"></div>Import CVS</a></li>
-                            <li><a href="{% url 'logout' %}"><div class="uk-icon-medium uk-icon-user"></div>Logout</a></li>
+                            <li><a href="{% url 'users:profile' %}"><div class="uk-icon-medium uk-icon-user"></div> - Profile</a></li>
+                            <li><a href=""><div class="uk-icon-medium uk-icon-user"></div> - Statistic</a></li>
+                            <li><a href=""><div class="uk-icon-medium uk-icon-user"></div> - Import CVS</a></li>
+                            <li><a href="{% url 'logout' %}"><div class="uk-icon-medium uk-icon-user"></div> - Logout</a></li>
                         </ul>
                     {% else %}
                         <div class="uk-navbar-content uk-hidden-small">

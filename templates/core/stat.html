@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Statistic{% endblock %}
+{% block base_body %}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1">
+            {% for list in userCount %}
+                User #{{ list.id }}: <b>{{ list.login }}</b> <br />
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
