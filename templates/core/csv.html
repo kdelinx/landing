@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Import CSV file{% endblock %}
+{% block base_body %}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid">
+        <div class="uk-width-1-1 uk-margin-large-top">
+            <form class="uk-form" method="post" action="" enctype="multipart/form-data">
+                {{ form.non_field_errors }}
+                {% csrf_token %}
+                <div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-1-1">
+                        <div class="uk-form-row uk-margin-large">
+                            <div class="uk-form-icon uk-width-1-2">
+                                <i class="uk-icon-code"></i>
+                                <input type="file" name="file" class="uk-width-1-1 uk-form-large" placeholder="Put file .csv">
+                            </div>
+                            <span class="uk-form-help-inline">Send your CSV file for import to DB</span>
+                        </div>
+                    </div>
+                    <div class="uk-width-1-1 uk-margin-large">
+                        <div class="uk-form-row uk-margin-large">
+                            <button class="uk-button uk-button-success uk-button-large uk-width-1-2">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

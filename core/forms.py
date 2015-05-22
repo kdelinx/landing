@@ -1,9 +1,8 @@
-from django.forms import forms
+from django import forms
 from core.models import Landing
 
 
-class UploadCSVFile(forms.Form):
+class UploadCSVFile(forms.ModelForm):
     class Meta:
         model = Landing
-        fields = ['file']
-
+        fields = ['file',]
