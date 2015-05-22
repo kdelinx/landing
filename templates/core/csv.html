@@ -4,18 +4,30 @@
 
 <div class="uk-container uk-container-center">
     <div class="uk-grid">
-        <div class="uk-width-1-1 uk-margin-large-top">
+        <div class="uk-width-1-1 uk-margin-large-top uk-align-center">
             <form class="uk-form" method="post" action="" enctype="multipart/form-data">
                 {{ form.non_field_errors }}
                 {% csrf_token %}
                 <div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-1-1 uk-margin-large">
+                        <div class="uk-form-row uk-margin-large">
+                            <p class="uk-text-justify uk-text-left">
+                                For correctly working this importer, you should send CSV file with right syntax. For example,
+                                <dl class="uk-description-list-line">
+                                    <dt>string0,string1,string2,string3,string4,string5,string6,string7,string8,string9,string10</dt>
+                                    <dt>string0,string1,string2,string3,string4,string5,string6,string7,string8,string9,string10</dt>
+                                    <dt>string0,string1,string2,string3,string4,string5,string6,string7,string8,string9,string10</dt>
+                                </dl>
+                                And just after these, logics of parsing will create row in data base with records from your file.
+                            </p>
+                        </div>
+                    </div>
                     <div class="uk-width-1-1">
                         <div class="uk-form-row uk-margin-large">
                             <div class="uk-form-icon uk-width-1-2">
                                 <i class="uk-icon-code"></i>
                                 <input type="file" name="file" class="uk-width-1-1 uk-form-large" placeholder="Put file .csv">
                             </div>
-                            <span class="uk-form-help-inline">Send your CSV file for import to DB</span>
                         </div>
                     </div>
                     <div class="uk-width-1-1 uk-margin-large">

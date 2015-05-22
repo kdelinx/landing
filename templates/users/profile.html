@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
+{% load i18n %}
 {% block base_body %}
 
 <div class="uk-container uk-container-center">
     <div class="uk-grid">
         <div class="uk-width-1-1">
             Email: {{ profile.email }} <br />
-            Name: {{ profile.login }} <br />
+
+            Name: {{ profile.get_short_name }} <br />
             IP: {{ profile.latest_ip }} <br />
             {% if user.is_superuser %}
                 <i>I am Admin!</i> <br>
             {% endif %}
-            {{ logs.log }}
+            Last activity: {{ profile.last_activity }} <br />
+            {{ logs.query }}
 
         </div>
     </div>

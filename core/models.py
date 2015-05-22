@@ -119,47 +119,10 @@ class Landing(models.Model):
 
     class Meta:
         verbose_name = _('Landing')
-        verbose_name_plural = _('Landings')
+        verbose_name_plural = _('landings')
 
     def __unicode__(self):
-        return _('%s - %s' % unicode(self.domen, self.serverPathFile))
-
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        csvfile = self.file.open(mode='rU')
-        reader = csv.reader(csvfile)
-        for domain, serverpath, link, phonepic, phonetext, linkphonepic, emailistext, emailispic, linkemailpic, \
-                visit, visitlink, visitdomain, piwik, piwiknum, logoid, freeamount, bonus, bonus2, bonus3, \
-                currency, livechat, serverpathfile, regform in reader:
-            self.domen = domain
-            self.server_path = serverpath
-            self.link = link
-            self.phoneIsPic = phonepic
-            self.phoneIsText = phonetext
-            self.linkPhonePic = linkphonepic
-            self.emailIsText = emailistext
-            self.emailIsPic = emailispic
-            self.linkEmailPic = linkemailpic
-            self.visit = visit
-            self.visitLink = visitlink
-            self.visitDomain = visitdomain
-            self.piwik = piwik
-            self.piwikNumber = piwiknum
-            self.logoId = logoid
-            self.freeAmmount = freeamount
-            self.bonus = bonus
-            self.bonus2 = bonus2
-            self.bonus3 = bonus3
-            self.currency = currency
-            self.liveChat = livechat
-            self.serverPathFile = serverpathfile
-            self.regForm = regform
-        super(Landing, self).save(
-            force_insert=force_insert,
-            force_update=force_update,
-            using=using,
-            update_fields=update_fields
-        )
+        return '%s - %s' % (self.domen, self.serverPathFile)
 
 
 class Log(models.Model):
