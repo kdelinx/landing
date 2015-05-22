@@ -4,6 +4,7 @@ import uuid
 from django.db import models
 from users.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.core.files import File
 
 
 def pathToCSV(instance, filename):
