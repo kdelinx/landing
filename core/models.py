@@ -1,10 +1,23 @@
 #coding: utf-8
+import csv
+import uuid
 from django.db import models
 from users.models import User
 from django.utils.translation import ugettext_lazy as _
 
 
+def pathToCSV(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = '%s.%s' % (uuid.uuid4(), ext)
+    return 'csv/%s%s%s' % (filename[:1], filename[2:5], filename)
+
 class Landing(models.Model):
+    file = models.FileField(
+        _('Upload file'),
+        upload_to=pathToCSV,
+        blank=True,
+        null=True,
+    )
     domen = models.CharField(
         _('Domain'),
         max_length=255,
@@ -108,7 +121,39 @@ class Landing(models.Model):
         verbose_name_plural = _('Landings')
 
     def __unicode__(self):
-        return self.domen
+        return _('%s - %s' % (self.domen, self.serverPathFile))
+
+    def save(self, *args):
+        with open(self.file, 'rU') as csvfile:
+            reader = csv.reader(csvfile)
+            for domain, serverpath, link, phonepic, phonetext, linkphonepic, emailistext, emailispic, linkemailpic, \
+                    visit, visitlink, visitdomain, piwik, piwiknum, logoid, freeamount, bonus, bonus2, bonus3, \
+                    currency, livechat, serverpathfile, regform, files in reader:
+                self.file = files
+                self.domen = domain
+                self.server_path = serverpath
+                self.link = link
+                self.phoneIsPic = phonepic
+                self.phoneIsText = phonetext
+                self.linkPhonePic = linkphonepic
+                self.emailIsText = emailistext
+                self.emailIsPic = emailispic
+                self.linkEmailPic = linkemailpic
+                self.visit = visit
+                self.visitLink = visitlink
+                self.visitDomain = visitdomain
+                self.piwik = piwik
+                self.piwikNumber = piwiknum
+                self.logoId = logoid
+                self.freeAmmount = freeamount
+                self.bonus = bonus
+                self.bonus2 = bonus2
+                self.bonus3 = bonus3
+                self.currency = currency
+                self.liveChat = livechat
+                self.serverPathFile = serverpathfile
+                self.regForm = regform
+        super(Landing, self).save(*args)
 
 
 class Log(models.Model):
