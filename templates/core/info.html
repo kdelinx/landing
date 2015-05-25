@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% block title %}Information {{ current_landing.id }}{% endblock %}
+{% block base_body %}
+
+<div class="uk-container uk-container-center">
+    <div class="uk-grid uk-grid-width-1-1">
+        <div class="uk-panel uk-panel-box uk-text-small">
+            <div class="uk-text-small">
+                <style type="text/css">
+                    .tg  {border-collapse:collapse;border-spacing:0;}
+                    .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                    .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+                </style>
+                {% for list in current_landing %}
+                    <table class="tg">
+                        <tr>
+                            <th class="tg-031e">Domain</th>
+                            <th class="tg-031e">{{ list.domen }}</th>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Server Path</td>
+                            <td class="tg-031e">{{ list.server_path }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Link</td>
+                            <td class="tg-031e">{{ list.link }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Phone is picture</td>
+                            <td class="tg-031e">{{ list.phoneIsPic }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Phone is text</td>
+                            <td class="tg-031e">{{ list.phoneIsText }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Link</td>
+                            <td class="tg-031e">
+                                {% if list.linkPhonePic == None %}
+                                    Null
+                                {% else %}
+                                    <img src="{{ list.linkPhonePic }}">
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Email is picture</td>
+                            <td class="tg-031e">{{ list.emailIsPic }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Email is text</td>
+                            <td class="tg-031e">{{ list.emailIsText }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Link</td>
+                            <td class="tg-031e">
+                                {% if list.linkEmailPic == None %}
+                                    Null
+                                {% else %}
+                                    <img src="{{ list.linkEmailPic }}">
+                                {% endif %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Visit</td>
+                            <td class="tg-031e">{{ list.visit }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Visit link</td>
+                            <td class="tg-031e">{{ list.visitLink }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Visit domain</td>
+                            <td class="tg-031e">{{ list.visitDomain }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Piwik</td>
+                            <td class="tg-031e">{{ list.piwik }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Piwik number</td>
+                            <td class="tg-031e">{{ list.piwikNumber }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">logoId</td>
+                            <td class="tg-031e">{{ list.logoId }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">free_ammount()</td>
+                            <td class="tg-031e">{{ list.freeAmmount }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">bonus</td>
+                            <td class="tg-031e">{{ list.bonus }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">bonus2</td>
+                            <td class="tg-031e">{{ list.bonus2 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">bonus3</td>
+                            <td class="tg-031e">{{ list.bonus3 }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Currency</td>
+                            <td class="tg-031e">{{ list.currency }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">liveChat()</td>
+                            <td class="tg-031e">{{ list.liveChat }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Server path file</td>
+                            <td class="tg-031e">{{ list.serverPathFile }}</td>
+                        </tr>
+                        <tr>
+                            <td class="tg-031e">Register form</td>
+                            <td class="tg-031e">{{ list.regForm }}</td>
+                        </tr>
+                    </table>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

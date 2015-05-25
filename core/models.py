@@ -13,7 +13,7 @@ def pathToCSV(instance, filename):
     return 'csv/%s%s%s' % (filename[:1], filename[2:5], filename)
 
 class Landing(models.Model):
-    file = models.FileField(
+    fileing = models.FileField(
         _('Upload file'),
         upload_to=pathToCSV,
         blank=True,
@@ -123,44 +123,6 @@ class Landing(models.Model):
 
     def __unicode__(self):
         return '%s - %s' % (self.domen, self.serverPathFile)
-
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
-        csvfile = self.file.open(mode='rU')
-        raise Exception(str(type()))
-        reader = csv.reader(csvfile)
-        for domain, serverpath, link, phonepic, phonetext, linkphonepic, emailistext, emailispic, linkemailpic, \
-                visit, visitlink, visitdomain, piwik, piwiknum, logoid, freeamount, bonus, bonus2, bonus3, \
-                currency, livechat, serverpathfile, regform in reader:
-            self.domen = domain
-            self.server_path = serverpath
-            self.link = link
-            self.phoneIsPic = phonepic
-            self.phoneIsText = phonetext
-            self.linkPhonePic = linkphonepic
-            self.emailIsText = emailistext
-            self.emailIsPic = emailispic
-            self.linkEmailPic = linkemailpic
-            self.visit = visit
-            self.visitLink = visitlink
-            self.visitDomain = visitdomain
-            self.piwik = piwik
-            self.piwikNumber = piwiknum
-            self.logoId = logoid
-            self.freeAmmount = freeamount
-            self.bonus = bonus
-            self.bonus2 = bonus2
-            self.bonus3 = bonus3
-            self.currency = currency
-            self.liveChat = livechat
-            self.serverPathFile = serverpathfile
-            self.regForm = regform
-        super(Landing, self).save(
-            force_insert=force_insert,
-            force_update=force_update,
-            using=using,
-            update_fields=update_fields
-        )
 
 
 class Log(models.Model):

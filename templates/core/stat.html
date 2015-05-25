@@ -4,11 +4,40 @@
 
 <div class="uk-container uk-container-center">
     <div class="uk-grid">
-        <div class="uk-width-1-1">
-            {% for list in userCount %}
-                User #{{ list.id }}: <b>{{ list.login }}</b> <br />
-            {% endfor %}
+        <div class="uk-width-1-1 uk-margin-small-top">
+            <ul class="uk-list">
+                {% for list in landing %}
+                    <li class="uk-text-justify"><b>{{ list.id }}</b> - {{ list.domen }} | {{ list.server_path }}
+                        <br /><a href="{% url 'landing:landing_id' list.id %}">More better...</a></li><hr>
+                {% endfor %}
+            </ul>
         </div>
+        <div class="uk-width-1-1 uk-container-center uk-container">
+            {% if landing.has_other_pages %}
+                <div class="paginator uk-text-center uk-container-center">
+                    <span class="uk-icon-step-backward">
+                        {% if landing.has_previous %}
+                            <a href="?page=1">First</a> |
+                            <a href="?page={{ landing.previous_page_number }}">back</a>
+                        {% endif %}
+                            <span>
+                                Page {{ landing.number }} from {{ landing.paginator.num_pages }}
+                            </span>
+                        {% if landing.has_next %}
+                            <a href="?page={{ landing.next_page_number }}">forward</a> |
+                            <a href="?page={{ landing.paginator.num_pages }}">last</a>
+                        {% endif %}
+                    </span>
+                </div>
+        </div>
+        <div class="uk-width-1-1 uk-flex uk-flex-center">
+            <form action="" method="get">
+                <input type="text" name="page" placeholder="Enter number of page">
+            </form>
+        </div>
+        {% else %}
+            <span class="uk-text-small">*Count of landings more then 50</span>
+        {% endif %}
     </div>
 </div>
 
