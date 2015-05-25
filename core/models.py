@@ -1,5 +1,4 @@
-#coding: utf-8
-import csv
+# coding: utf-8
 import uuid
 from django.db import models
 from users.models import User

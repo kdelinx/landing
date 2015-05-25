@@ -118,6 +118,7 @@
                             <td class="tg-031e">{{ list.regForm }}</td>
                         </tr>
                     </table>
+                    <a href="{% url 'landing:landing_delete' list.id %}">Delete record landing</a>
                 {% endfor %}
             </div>
         </div>
