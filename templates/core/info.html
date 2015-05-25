@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Information {{ current_landing.id }}{% endblock %}
+{% block title %}Information{% endblock %}
 {% block base_body %}
 
 <div class="uk-container uk-container-center">
@@ -22,8 +22,8 @@
                             <td class="tg-031e">{{ list.server_path }}</td>
                         </tr>
                         <tr>
-                            <td class="tg-031e">Link</td>
-                            <td class="tg-031e">{{ list.link }}</td>
+                            <td class="tg-031e">Link URI</td>
+                            <td class="tg-031e"><a href="{{ list.link }}">{{ list.link }}</a></td>
                         </tr>
                         <tr>
                             <td class="tg-031e">Phone is picture</td>

@@ -3,42 +3,75 @@
 {% block base_body %}
 
 <div class="uk-container uk-container-center">
-    <div class="uk-grid">
-        <div class="uk-width-1-1 uk-margin-small-top">
-            <ul class="uk-list">
-                {% for list in landing %}
-                    <li class="uk-text-justify"><b>{{ list.id }}</b> - {{ list.domen }} | {{ list.server_path }}
-                        <br /><a href="{% url 'landing:landing_id' list.id %}">More better...</a></li><hr>
-                {% endfor %}
-            </ul>
+    <div class="uk-width-1-1 uk-margin-small-top">
+        <div class="uk-grid uk-grid-width-1-2" data-uk-grid="{gutter: 40">
+            <div class="uk-width-1-2">
+                <ul class="uk-list">
+                    {% for list in landing %}
+                        <li class="uk-text-justify"><b>{{ list.id }}</b> - {{ list.domen }} | {{ list.server_path }}
+                            <br /><a href="{% url 'landing:landing_id' list.id %}">-> More better...</a></li><hr>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="uk-width-1-2 uk-text-right">
+                <span class="uk-text-large">Search...</span>
+                <form class="uk-form" method="post" action="">
+                    {% csrf_token %}
+                    <span>Domain: </span><input type="text" name="domain" placeholder="Domain"><br/>
+                    <span>Server Path: </span><input type="text" name="serverPath" placeholder="Server Path"><br/>
+                    <span>Link URI: </span><input type="text" name="phoneLink" placeholder="Link URI"><br/>
+                    <span>Phone is picture: </span><input type="checkbox" name="phonePic" placeholder="Phone is picture"><br/>
+                    <span>Phone is text: </span><input type="checkbox" name="phoneText" placeholder="Phone is text"><br/>
+                    <span>Email is picture: </span><input type="checkbox" name="emailPic" placeholder="Email is picture"><br/>
+                    <span>Email is text: </span><input type="checkbox" name="emailText" placeholder="Email is text"><br/>
+                    <span>Visit: </span><input type="checkbox" name="visit" placeholder="Visit"><br/>
+                    <span>Visit link: </span><input type="text" name="visit" placeholder="Visit link"><br/>
+                    <span>Visit domain: </span><input type="text" name="visitDomain" placeholder="Visit domain"><br/>
+                    <span>Piwik: </span><input type="checkbox" name="piwik" placeholder="Piwik"><br/>
+                    <span>Piwik number: </span><input type="text" name="piwikNumber" placeholder="Piwik number"><br/>
+                    <span>logoID: </span><input type="checkbox" name="logoid" placeholder="logoID"><br/>
+                    <span>free_amount(): </span><input type="checkbox" name="freeamount" placeholder="free_amount()"><br/>
+                    <span>bonus: </span><input type="checkbox" name="bonus" placeholder="bonus"><br/>
+                    <span>bonus2: </span><input type="checkbox" name="bonus2" placeholder="bonus2"><br/>
+                    <span>bonus3: </span><input type="checkbox" name="bonus3" placeholder="bonus3"><br/>
+                    <span>Currency: </span><input type="checkbox" name="currency" placeholder="Currency"><br/>
+                    <span>liveChat(): </span><input type="checkbox" name="livechat" placeholder="liveChat()"><br/>
+                    <span>Server path file: </span><input type="text" name="serverPathFile" placeholder="Server path file"><br/>
+                    <span>Register form: </span><input type="checkbox" name="regForm" placeholder="Register form"><br/>
+
+                    <input class="uk-button uk-button-primary" type="submit" name="submit" value="Show">
+                </form>
+            </div>
         </div>
-        <div class="uk-width-1-1 uk-container-center uk-container">
-            {% if landing.has_other_pages %}
-                <div class="paginator uk-text-center uk-container-center">
-                    <span class="uk-icon-step-backward">
-                        {% if landing.has_previous %}
-                            <a href="?page=1">First</a> |
-                            <a href="?page={{ landing.previous_page_number }}">back</a>
-                        {% endif %}
-                            <span>
-                                Page {{ landing.number }} from {{ landing.paginator.num_pages }}
-                            </span>
-                        {% if landing.has_next %}
-                            <a href="?page={{ landing.next_page_number }}">forward</a> |
-                            <a href="?page={{ landing.paginator.num_pages }}">last</a>
-                        {% endif %}
-                    </span>
-                </div>
-        </div>
-        <div class="uk-width-1-1 uk-flex uk-flex-center">
-            <form action="" method="get">
-                <input type="text" name="page" placeholder="Enter number of page">
-            </form>
-        </div>
-        {% else %}
-            <span class="uk-text-small">*Count of landings more then 50</span>
-        {% endif %}
     </div>
+</div>
+
+<div class="uk-width-1-1 uk-container-center uk-container">
+{% if landing.has_other_pages %}
+    <div class="paginator uk-text-center uk-container-center">
+        <span class="uk-icon-step-backward">
+            {% if landing.has_previous %}
+                <a href="?page=1">First</a> |
+                <a href="?page={{ landing.previous_page_number }}">back</a>
+            {% endif %}
+                <span>
+                    Page {{ landing.number }} from {{ landing.paginator.num_pages }}
+                </span>
+            {% if landing.has_next %}
+                <a href="?page={{ landing.next_page_number }}">forward</a> |
+                <a href="?page={{ landing.paginator.num_pages }}">last</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+<div class="uk-width-1-1 uk-flex uk-flex-center">
+<form action="" method="get">
+    <input type="text" name="page" placeholder="Enter number of page">
+</form>
+</div>
+{% else %}
+<span class="uk-text-small">*Count of landings more then 50</span>
+{% endif %}
 </div>
 
 {% endblock %}
