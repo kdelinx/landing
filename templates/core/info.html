@@ -118,7 +118,10 @@
                             <td class="tg-031e">{{ list.regForm }}</td>
                         </tr>
                     </table>
-                    <a href="{% url 'landing:landing_delete' list.id %}">Delete record landing</a>
+                    <br />
+                    <a href="{% url 'landing:landing_delete' list.id %}">
+                        <span style="color: #ff000c">*** Delete record of landing</span>
+                    </a>
                 {% endfor %}
             </div>
         </div>

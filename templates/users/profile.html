@@ -6,14 +6,14 @@
     <div class="uk-grid">
         <div class="uk-width-1-1">
             Email: {{ profile.email }} <br />
-
             Name: {{ profile.get_short_name }} <br />
             IP: {{ profile.latest_ip }} <br />
+            Sum of landing: {{ countLanding }} <br />
             {% if user.is_superuser %}
                 <i>I am Admin!</i> <br>
             {% endif %}
             Last activity: {{ profile.last_activity }} <br />
-            {{ logs.query }}
+            {{ logs.query }} <br />
 
         </div>
     </div>

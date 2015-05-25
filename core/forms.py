@@ -6,3 +6,9 @@ class UploadCSVFile(forms.ModelForm):
     class Meta:
         model = Landing
         fields = ('fileing',)
+
+class CreateLanding(forms.ModelForm):
+    class Meta:
+        model = Landing
+        fields = ('domen',)
+        # TODO other forms

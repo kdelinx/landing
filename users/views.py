@@ -29,7 +29,8 @@ def otherProfile(request, id):
     profile = get_object_or_404(User, id=id)
     context = {
         'profile': profile,
-        'logs': Log.objects.filter(user=profile.id)[:5]
+        'logs': Log.objects.filter(user=profile.id)[:5],
+        'countLanding': Landing.objects.all(),
     }
     return render(request, 'users/profile.html', context)
 
