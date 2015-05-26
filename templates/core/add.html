@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}New landing{% endblock %}
+{% block base_body %}
+    <div class="uk-container uk-container-center">
+        <div class="uk-width-1-1 uk-text-center">
+            <div class="uk-grid">
+                <div class="uk-grid-width-1-1">
+                    <div class="uk-form-row uk-margin-large">
+                        <p class="uk-margin-small-top">
+                            <form class="uk-form " action="" method="post" >
+                                {% csrf_token %}
+                                {{ form.non_field_errors }}
+                                {{ form.as_p }}
+                                <input class="uk-button-primary" type="submit" value="Create" name="submit">
+                            </form>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
