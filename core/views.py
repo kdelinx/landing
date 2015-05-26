@@ -79,44 +79,42 @@ def landing_create(request, id):
 
 @login_required
 def importFromCSV(request):
-    form = UploadCSVFile(request.FILES, request.POST)
-    if form.is_valid():
-        obj = form.save()
-        fileing = request.FILES['fileing']
-        type(fileing)
-        open_state = open(fileing, mode='rU', buffering=-1)
-        file_model = File(open_state)
-        # raise Exception(str(type(file_model)))
-        reader = csv.reader(file_model)
-        for domain, serverpath, link, phonepic, phonetext, linkphonepic, emailistext, emailispic, linkemailpic, \
-                visit, visitlink, visitdomain, piwik, piwiknum, logoid, freeamount, bonus, bonus2, bonus3, \
-                currency, livechat, serverpathfile, regform in reader:
-            obj.domen = domain
-            obj.server_path = serverpath
-            obj.link = link
-            obj.phoneIsPic = phonepic
-            obj.phoneIsText = phonetext
-            obj.linkPhonePic = linkphonepic
-            obj.emailIsText = emailistext
-            obj.emailIsPic = emailispic
-            obj.linkEmailPic = linkemailpic
-            obj.visit = visit
-            obj.visitLink = visitlink
-            obj.visitDomain = visitdomain
-            obj.piwik = piwik
-            obj.piwikNumber = piwiknum
-            obj.logoId = logoid
-            obj.freeAmmount = freeamount
-            obj.bonus = bonus
-            obj.bonus2 = bonus2
-            obj.bonus3 = bonus3
-            obj.currency = currency
-            obj.liveChat = livechat
-            obj.serverPathFile = serverpathfile
-            obj.regForm = regform
-            obj.save()
-            messages.success(request, 'File was upload successful.')
-            return HttpResponseRedirect(
-                reverse('landing:landing')
-            )
-        return render(request, 'core/csv.html', {'form': form})
+    form = UploadCSVFile(request.FILES, request.POST or None)
+    if request.POST:
+        if form.is_valid():
+            obj = form.save()
+            csvfile = request.FILES['fileing'].read()
+            reader = csv.DictReader(csvfile)
+            for domain, serverpath, link, phonepic, phonetext, linkphonepic, emailistext, emailispic, linkemailpic, \
+                    visit, visitlink, visitdomain, piwik, piwiknum, logoid, freeamount, bonus, bonus2, bonus3, \
+                    currency, livechat, serverpathfile, regform in reader:
+                obj.domen = domain
+                obj.server_path = serverpath
+                obj.link = link
+                obj.phoneIsPic = phonepic
+                obj.phoneIsText = phonetext
+                obj.linkPhonePic = linkphonepic
+                obj.emailIsText = emailistext
+                obj.emailIsPic = emailispic
+                obj.linkEmailPic = linkemailpic
+                obj.visit = visit
+                obj.visitLink = visitlink
+                obj.visitDomain = visitdomain
+                obj.piwik = piwik
+                obj.piwikNumber = piwiknum
+                obj.logoId = logoid
+                obj.freeAmmount = freeamount
+                obj.bonus = bonus
+                obj.bonus2 = bonus2
+                obj.bonus3 = bonus3
+                obj.currency = currency
+                obj.liveChat = livechat
+                obj.serverPathFile = serverpathfile
+                obj.regForm = regform
+                obj.save()
+                messages.success(request, 'File was upload successful.')
+                return HttpResponseRedirect(
+                    reverse('landing:landing')
+                )
+    return render(request, 'core/csv.html', {'form': form})
+
