@@ -66,7 +66,7 @@ def landing_delete(request, id):
 
 
 @login_required
-def landing_create(request, id):
+def landing_create(request):
     form = CreateLanding(request.POST or None)
     if form.is_valid():
         form.save()
