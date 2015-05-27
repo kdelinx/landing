@@ -3,9 +3,9 @@ import csv
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from core.forms import CreateLanding
 from core.forms import UploadCSVFile
 from django.contrib import messages
-from django.core.files import File
 from core.models import Landing
 from django.core.urlresolvers import reverse
 
