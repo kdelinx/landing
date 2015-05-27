@@ -81,9 +81,4 @@ LOGIN_REDIRECT_URL = '/profile/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_AFTER_SIGNUP = True
-COMPRESS_ENABLE = True
-STATICFILE_FINDERS = (
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'compressor.finders.CompressorFinder',
-)
+# COMPRESS_ENABLE = True

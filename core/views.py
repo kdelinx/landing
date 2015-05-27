@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from core.forms import CreateLanding
 from core.forms import UploadCSVFile
 from django.contrib import messages
+
 from core.models import Landing
 from django.core.urlresolvers import reverse
 

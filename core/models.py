@@ -3,7 +3,6 @@ import uuid
 from django.db import models
 from users.models import User
 from django.utils.translation import ugettext_lazy as _
-from django.core.files import File
 
 
 def pathToCSV(instance, filename):
@@ -77,6 +76,7 @@ class Landing(models.Model):
     )
     piwikNumber = models.SmallIntegerField(
         _('Number of piwik'),
+        null=True,
         default=0,
     )
     logoId = models.BooleanField(
