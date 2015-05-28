@@ -60,6 +60,7 @@ DATABASES = {
         'USER': 'root',
         'PASSWORD': '405b9c',
         'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 LANGUAGE_CODE = 'en-us'
@@ -81,4 +82,10 @@ LOGIN_REDIRECT_URL = '/profile/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_AFTER_SIGNUP = True
-# COMPRESS_ENABLE = True
+COMPRESS_ENABLE = True
+CACHE = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'foobar'),
+    }
+}

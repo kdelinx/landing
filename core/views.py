@@ -1,8 +1,9 @@
 # coding: utf-8
 import csv
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, Http404
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from core.forms import CreateLanding
 from core.forms import UploadCSVFile
 from django.contrib import messages
@@ -35,7 +36,43 @@ def about(request):
 @login_required
 def landing(request):
     context = {}
-    landing = Landing.objects.all()
+    domain = request.POST.get('domain', '')
+    server_path = request.POST.get('serverpath', '')
+    link = request.POST.get('phonelink', '')
+    phonepic = request.POST.get('phonepic', '')
+    phonetext = request.POST.get('phonetext', '')
+    emailpic = request.POST.get('emailpic', '')
+    emailtext = request.POST.get('emailtext', '')
+    visit = request.POST.get('visit', '')
+    visitlink = request.POST.get('visitlink', '')
+    visitdomain = request.POST.get('visidomain', '')
+    piwik = request.POST.get('piwik', '')
+    logoid = request.POST.get('logoid', '')
+    freeamount = request.POST.get('freeamount', '')
+    bonus = request.POST.get('bonus', '')
+    bonus2 = request.POST.get('bonus2', '')
+    bonus3 = request.POST.get('bonus3', '')
+    currency = request.POST.get('currency', '')
+    livechat = request.POST.get('livechat', '')
+    server_path_file = request.POST.get('serverpathfile', '')
+    regform = request.POST.get('regform', '')
+
+    landing = Landing.objects\
+        .filter(Q(domen__contains=domain) | Q(server_path__contains=server_path) |
+                    Q(link__contains=link) | Q(phoneIsPic=phonepic) |
+                  Q(phoneIsText=phonetext) | Q(emailIsPic=emailpic) |
+                  Q(emailIsText=emailtext) | Q(visit=visit) |
+          Q(visitLink__contains=visitlink) | Q(visitDomain__contains=visitdomain) |
+                            Q(piwik=piwik) | Q(logoId=logoid) |
+                 Q(freeAmmount=freeamount) | Q(bonus=bonus) |
+                          Q(bonus2=bonus2) | Q(bonus3=bonus3) |
+                      Q(currency=currency) | Q(liveChat=livechat) |
+    Q(serverPathFile__contains=server_path_file) | Q(regForm=regform)
+    )
+
+    b = landing.query
+    print b
+
     paginator = Paginator(landing, 50)
     page = request.GET.get('page')
     try:
@@ -44,6 +81,7 @@ def landing(request):
         context['landing'] = paginator.page(1)
     except EmptyPage:
         context['landing'] = paginator.page(paginator.num_pages)
+
     return render(request, 'core/stat.html', context)
 
 
