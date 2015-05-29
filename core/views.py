@@ -1,13 +1,12 @@
 # coding: utf-8
 import csv
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
-from django.shortcuts import render, HttpResponseRedirect, get_object_or_404, Http404
+from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from core.forms import CreateLanding
 from core.forms import UploadCSVFile
 from django.contrib import messages
-
 from core.models import Landing
 from django.core.urlresolvers import reverse
 
@@ -58,16 +57,16 @@ def landing(request):
     regform = request.POST.get('regform', '')
 
     landing = Landing.objects\
-        .filter(Q(domen__contains=domain) | Q(server_path__contains=server_path) |
-                    Q(link__contains=link) | Q(phoneIsPic=phonepic) |
-                  Q(phoneIsText=phonetext) | Q(emailIsPic=emailpic) |
-                  Q(emailIsText=emailtext) | Q(visit=visit) |
-          Q(visitLink__contains=visitlink) | Q(visitDomain__contains=visitdomain) |
-                            Q(piwik=piwik) | Q(logoId=logoid) |
-                 Q(freeAmmount=freeamount) | Q(bonus=bonus) |
-                          Q(bonus2=bonus2) | Q(bonus3=bonus3) |
-                      Q(currency=currency) | Q(liveChat=livechat) |
-    Q(serverPathFile__contains=server_path_file) | Q(regForm=regform)
+        .filter( Q(domen__contains=domain) & Q(server_path__contains=server_path) &
+                    Q(link__contains=link) & Q(phoneIsPic=phonepic) &
+                  Q(phoneIsText=phonetext) & Q(emailIsPic=emailpic) &
+                  Q(emailIsText=emailtext) & Q(visit=visit) &
+          Q(visitLink__contains=visitlink) & Q(visitDomain__contains=visitdomain) &
+                            Q(piwik=piwik) & Q(logoId=logoid) &
+                 Q(freeAmmount=freeamount) & Q(bonus=bonus) &
+                          Q(bonus2=bonus2) & Q(bonus3=bonus3) &
+                      Q(currency=currency) & Q(liveChat=livechat) &
+    Q(serverPathFile__contains=server_path_file) & Q(regForm=regform)
     )
 
     b = landing.query
