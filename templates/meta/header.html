@@ -8,6 +8,9 @@
                     {% if user.is_authenticated %}
                         <ul class="uk-list">
                         <!-- TODO Insert link -->
+                            {% if user.is_superuser %}
+                                <li><a href="/admin"><div class="uk-icon-medium uk-icon-user"></div> - Admin</a></li>
+                            {% endif %}
                             <li><a href="{% url 'users:profile' %}"><div class="uk-icon-medium uk-icon-user"></div> - Profile</a></li>
                             <li><a href="{% url 'landing:landing' %}"><div class="uk-icon-medium uk-icon-user"></div> - Statistic</a></li>
                             <li><a href="{% url 'landing:landing_create' %}"><div class="uk-icon-medium uk-icon-user"></div> - Add new landing</a></li>

@@ -58,16 +58,16 @@ def landing(request):
     regform = request.POST.get('regform', '')
 
     landing = Landing.objects\
-        .filter( Q(domen__contains=domain) | Q(server_path__contains=server_path) |
-                    Q(link__contains=link) | Q(phoneIsPic=phonepic) |
+        .filter( Q(domen__icontains=domain) | Q(server_path__icontains=server_path) |
+                    Q(link__icontains=link) | Q(phoneIsPic=phonepic) |
                   Q(phoneIsText=phonetext) | Q(emailIsPic=emailpic) |
                   Q(emailIsText=emailtext) | Q(visit=visit) |
-          Q(visitLink__contains=visitlink) | Q(visitDomain__contains=visitdomain) |
+          Q(visitLink__icontains=visitlink) | Q(visitDomain__icontains=visitdomain) |
                             Q(piwik=piwik) | Q(logoId=logoid) |
                  Q(freeAmmount=freeamount) | Q(bonus=bonus) |
                           Q(bonus2=bonus2) | Q(bonus3=bonus3) |
                       Q(currency=currency) | Q(liveChat=livechat) |
-    Q(serverPathFile__contains=server_path_file) | Q(regForm=regform)
+    Q(serverPathFile__icontains=server_path_file) | Q(regForm=regform)
     ).distinct()
 
     paginator = Paginator(landing, 50)
