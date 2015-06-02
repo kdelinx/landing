@@ -5,8 +5,7 @@ from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from core.models import Log
 from users.models import User
-from django.db.models import Q
-from core.forms import CreateLanding, UploadCSVFile
+from core.forms import CreateLanding, UploadCSVFile, FilterLandingForm
 from django.contrib import messages
 from core.models import Landing
 from django.core.urlresolvers import reverse
@@ -35,43 +34,29 @@ def about(request):
 
 @login_required
 def landing(request):
-    context = {}
-    domain = request.POST.get('domain', '')
-    server_path = request.POST.get('serverpath', '')
-    link = request.POST.get('phonelink', '')
-    phonepic = request.POST.get('phonepic', '')
-    phonetext = request.POST.get('phonetext', '')
-    emailpic = request.POST.get('emailpic', '')
-    emailtext = request.POST.get('emailtext', '')
-    visit = request.POST.get('visit', '')
-    visitlink = request.POST.get('visitlink', '')
-    visitdomain = request.POST.get('visidomain', '')
-    piwik = request.POST.get('piwik', '')
-    logoid = request.POST.get('logoid', '')
-    freeamount = request.POST.get('freeamount', '')
-    bonus = request.POST.get('bonus', '')
-    bonus2 = request.POST.get('bonus2', '')
-    bonus3 = request.POST.get('bonus3', '')
-    currency = request.POST.get('currency', '')
-    livechat = request.POST.get('livechat', '')
-    server_path_file = request.POST.get('serverpathfile', '')
-    regform = request.POST.get('regform', '')
+    context = {'landing_filter_form': FilterLandingForm()}
+    if request.method == 'POST':
+        filter_params = {}
+        form = FilterLandingForm(request.POST)
+        if form.is_valid():
+            for name, value in form.cleaned_data.iteritems():
+                if value != '':
+                    if name in ('domen', 'server_path', 'link', 'visitLink', 'visitDomain', 'serverPathFile'):
+                        filter_params[name + '__icontains'] = value
+                    else:
+                        filter_params[name] = value
 
-    landing = Landing.objects\
-        .filter( Q(domen__icontains=domain) | Q(server_path__icontains=server_path) |
-                    Q(link__icontains=link) | Q(phoneIsPic=phonepic) |
-                  Q(phoneIsText=phonetext) | Q(emailIsPic=emailpic) |
-                  Q(emailIsText=emailtext) | Q(visit=visit) |
-          Q(visitLink__icontains=visitlink) | Q(visitDomain__icontains=visitdomain) |
-                            Q(piwik=piwik) | Q(logoId=logoid) |
-                 Q(freeAmmount=freeamount) | Q(bonus=bonus) |
-                          Q(bonus2=bonus2) | Q(bonus3=bonus3) |
-                      Q(currency=currency) | Q(liveChat=livechat) |
-    Q(serverPathFile__icontains=server_path_file) | Q(regForm=regform)
-    ).distinct()
+            landing = Landing.objects.filter(**filter_params).distinct()
+            p = landing.query
+            print p
 
+        else:
+            landing = Landing.objects.all()
+    else:
+        landing = Landing.objects.all()
+
+    page = request.POST.get('page', '1')
     paginator = Paginator(landing, 50)
-    page = request.GET.get('page')
     try:
         context['landing'] = paginator.page(page)
     except PageNotAnInteger:
