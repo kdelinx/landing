@@ -40,22 +40,22 @@ def landing(request):
         form = FilterLandingForm(request.POST)
         if form.is_valid():
             for name, value in form.cleaned_data.iteritems():
-                if value != '':
+                if name not in form.data:
+                    continue
+
+                if value != '' and value is not None:
                     if name in ('domen', 'server_path', 'link', 'visitLink', 'visitDomain', 'serverPathFile'):
                         filter_params[name + '__icontains'] = value
                     else:
                         filter_params[name] = value
 
             landing = Landing.objects.filter(**filter_params)
-            p = landing.query
-            print p
         else:
-            print form.errors
             landing = Landing.objects.all()
     else:
         landing = Landing.objects.all()
 
-    page = request.POST.get('page', '1')
+    page = request.GET.get('page', '1')
     paginator = Paginator(landing, 50)
     try:
         context['landing'] = paginator.page(page)
