@@ -50,6 +50,8 @@ def landing(request):
                         filter_params[name] = value
 
             landing = Landing.objects.filter(**filter_params)
+            b = landing.query
+            print b
         else:
             landing = Landing.objects.all()
     else:

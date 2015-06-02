@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Statistic{% endblock %}
 {% block base_body %}
 
@@ -7,10 +8,15 @@
         <div class="uk-grid uk-grid-width-1-2" data-uk-grid="{gutter: 40}">
             <div class="uk-width-1-2">
                 <ul class="uk-list">
-                    {% for list in landing %}
-                        <li class="uk-text-justify"><b>{{ list.id }}</b> - {{ list.domen }} | {{ list.server_path }}
-                            <br /><a href="{% url 'landing:landing_id' list.id %}">-> More better...</a></li><hr>
-                    {% endfor %}
+                    {% if landing %}
+                        {% for list in landing %}
+                            <li class="uk-text-justify"><b>{{ list.id }}</b> - {{ list.domen }} | {{ list.server_path }}
+                                <br /><a href="{% url 'landing:landing_id' list.id %}">-> More better...</a></li><hr>
+                        {% endfor %}
+                    {% else %}
+                        <li class="uk-text-justify uk-text-large">Records not found!</li>
+                        <img src="{% static 'img/homer.png' %}">
+                    {% endif %}
                 </ul>
             </div>
             <div class="uk-width-1-2 uk-text-right">
