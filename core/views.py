@@ -46,11 +46,11 @@ def landing(request):
                     else:
                         filter_params[name] = value
 
-            landing = Landing.objects.filter(**filter_params).distinct()
+            landing = Landing.objects.filter(**filter_params)
             p = landing.query
             print p
-
         else:
+            print form.errors
             landing = Landing.objects.all()
     else:
         landing = Landing.objects.all()
