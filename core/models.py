@@ -129,6 +129,9 @@ class Log(models.Model):
     log = models.TextField(
         _('Action listing'),
     )
+    date_publishing = models.DateTimeField(
+        auto_now_add=True
+    )
 
     class Meta:
         verbose_name = _('Logging')

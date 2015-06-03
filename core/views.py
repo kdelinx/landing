@@ -34,7 +34,9 @@ def about(request):
 
 @login_required
 def landing(request):
-    context = {'landing_filter_form': FilterLandingForm()}
+    context = {
+        'landing_filter_form': FilterLandingForm()
+    }
     if request.method == 'POST':
         filter_params = {}
         form = FilterLandingForm(request.POST)

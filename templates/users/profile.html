@@ -31,6 +31,7 @@
                     {% for log in logs %}
                         <ul class="uk-list uk-list-striped">
                             <li>
+                                <span class="uk-float-left"><i class="uk-icon-ticket"></i> Date: {{ log.date_publishing }}</span>
                                 <span class="uk-float-right uk-text-success">
                                     {% if 'Delete' in log.log %}
                                         <span style="color: #ff000c">{{ log.log }}</span>
