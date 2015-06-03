@@ -130,6 +130,7 @@ class Log(models.Model):
         _('Action listing'),
     )
     date_publishing = models.DateTimeField(
+        _('Date publishing action'),
         auto_now_add=True
     )
 
