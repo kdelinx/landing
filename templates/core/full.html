@@ -16,60 +16,164 @@
     .tg  {border-collapse:collapse;border-spacing:0;}
     .tg td{font-family:Arial, sans-serif;font-size:8px;padding:10px 1px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
     .tg th{font-family:Arial, sans-serif;font-size:8px;font-weight:normal;padding:10px 1px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+    .vertical-text {
+        writing-mode:tb-rl;
+        -webkit-transform:rotate(90deg);
+        -moz-transform:rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform:rotate(90deg);
+        transform: rotate(90deg);
+        white-space:nowrap;
+        bottom:0;
+        width:20px;
+        height:20px;
+        max-width: 15px;
+    }
 </style>
 
     <table class="tg">
       <tr>
+        <th class="tg-031e">№</th>
         <th class="tg-031e">Domain</th>
         <th class="tg-031e">Server path</th>
         <th class="tg-031e">Link URI</th>
-        <th class="tg-031e">Phone is pic</th>
-        <th class="tg-031e">Phone is text</th>
+        <th class="tg-031e vertical-text">Phone is pic</th>
+        <th class="tg-031e vertical-text">Phone is text</th>
         <th class="tg-031e">Link phone</th>
-        <th class="tg-031e">Email is pic</th>
-        <th class="tg-031e">Email is text</th>
+        <th class="tg-031e vertical-text">Email is pic</th>
+        <th class="tg-031e vertical-text">Email is text</th>
         <th class="tg-031e">Link email</th>
-        <th class="tg-031e">Visit</th>
+        <th class="tg-031e vertical-text">Visit</th>
         <th class="tg-031e">Visit Link</th>
         <th class="tg-031e">Visit Domain</th>
-        <th class="tg-031e">piwik</th>
+        <th class="tg-031e vertical-text">piwik</th>
         <th class="tg-031e">piwik number</th>
-        <th class="tg-031e">logoid</th>
-        <th class="tg-031e">free_amount()</th>
-        <th class="tg-031e">bonus</th>
-        <th class="tg-031e">bonus2</th>
-        <th class="tg-031e">bonus3</th>
-        <th class="tg-031e">Currency</th>
-        <th class="tg-031e">liveChat</th>
+        <th class="tg-031e vertical-text">logoid</th>
+        <th class="tg-031e vertical-text">free_amount()</th>
+        <th class="tg-031e vertical-text">bonus</th>
+        <th class="tg-031e vertical-text">bonus2</th>
+        <th class="tg-031e vertical-text">bonus3</th>
+        <th class="tg-031e vertical-text">Currency</th>
+        <th class="tg-031e vertical-text">liveChat</th>
         <th class="tg-031e">serverPathFile</th>
-        <th class="tg-031e">Register form</th>
+        <th class="tg-031e vertical-text">Register form</th>
       </tr>
 {% if landing %}
     {% for list in landing %}
       <tr>
+        <td class="tg-031e">{{ list.id }}</td>
         <td class="tg-031e">{{ list.domen }}</td>
         <td class="tg-031e">{{ list.server_path }}</td>
         <td class="tg-031e">{{ list.link }}</td>
-        <td class="tg-031e">{{ list.phoneIsPic }}</td>
-        <td class="tg-031e">{{ list.phoneIsText }}</td>
+        <td class="tg-031e">
+            {% if list.phoneIsPic %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.phoneIsText %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
         <td class="tg-031e">{{ list.linkPhonePic }}</td>
-        <td class="tg-031e">{{ list.emailIsPic }}</td>
-        <td class="tg-031e">{{ list.emailIsText }}</td>
+        <td class="tg-031e">
+            {% if list.emailIsPic %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.emailIsText %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
         <td class="tg-031e">{{ list.linkEmailPic }}</td>
-        <td class="tg-031e">{{ list.visit }}</td>
+        <td class="tg-031e">
+            {% if list.visit %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
         <td class="tg-031e">{{ list.visitLink }}</td>
         <td class="tg-031e">{{ list.visitDomain }}</td>
-        <td class="tg-031e">{{ list.piwik }}</td>
-        <td class="tg-031e">{{ list.piwikNumber }}</td>
-        <td class="tg-031e">{{ list.logoId }}</td>
-        <td class="tg-031e">{{ list.freeAmmount }}</td>
-        <td class="tg-031e">{{ list.bonus }}</td>
-        <td class="tg-031e">{{ list.bonus2 }}</td>
-        <td class="tg-031e">{{ list.bonus3 }}</td>
-        <td class="tg-031e">{{ list.currency }}</td>
-        <td class="tg-031e">{{ list.liveChat }}</td>
+        <td class="tg-031e">
+            {% if list.piwik %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.piwikNumber %}
+                <center>{{ list.piwikNumber }}</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.logoId %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.freeAmmount %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.bonus %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.bonus2 %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}</td>
+        <td class="tg-031e">
+            {% if list.bonus3 %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.currency %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.liveChat %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
         <td class="tg-031e">{{ list.serverPathFile }}</td>
-        <td class="tg-031e">{{ list.regForm }}</td>
+        <td class="tg-031e">
+            {% if list.regForm %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
       </tr>
     {% endfor %}
 {% else %}
