@@ -150,3 +150,31 @@ def importFromCSV(request):
                 )
     return render(request, 'core/csv.html', {'form': form})
 
+
+@login_required
+def landing_full(request):
+    context = {
+        'landing_filter_form': FilterLandingForm()
+    }
+    if request.method == 'POST':
+        filter_params = {}
+        form = FilterLandingForm(request.POST)
+        if form.is_valid():
+            for name, value in form.cleaned_data.iteritems():
+                if name not in form.data:
+                    continue
+
+                if value != '' and value is not None:
+                    if name in ('domen', 'server_path', 'link', 'visitLink', 'visitDomain', 'serverPathFile'):
+                        filter_params[name + '__icontains'] = value
+                    else:
+                        filter_params[name] = value
+
+            context['landing'] = Landing.objects.filter(**filter_params)
+        else:
+            context['landing'] = Landing.objects.all()
+    else:
+        context['landing'] = Landing.objects.all()
+
+    return render(request, 'core/full.html', context)
+

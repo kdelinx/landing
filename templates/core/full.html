@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Full page landings{% endblock %}
+{% block base_body %}
+
+    <div class="uk-width-1-1 uk-text-center">
+        <span class="uk-text-large">Search...</span>
+        <form class="uk-form" method="post" action="">
+            {% csrf_token %}
+            {{ landing_filter_form.as_ul }}
+            <input class="uk-button uk-button-primary" type="submit" name="submit" value="Show">
+        </form>
+    </div>
+<br />
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{font-family:Arial, sans-serif;font-size:8px;padding:10px 1px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+    .tg th{font-family:Arial, sans-serif;font-size:8px;font-weight:normal;padding:10px 1px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+</style>
+
+    <table class="tg">
+      <tr>
+        <th class="tg-031e">Domain</th>
+        <th class="tg-031e">Server path</th>
+        <th class="tg-031e">Link URI</th>
+        <th class="tg-031e">Phone is pic</th>
+        <th class="tg-031e">Phone is text</th>
+        <th class="tg-031e">Link phone</th>
+        <th class="tg-031e">Email is pic</th>
+        <th class="tg-031e">Email is text</th>
+        <th class="tg-031e">Link email</th>
+        <th class="tg-031e">Visit</th>
+        <th class="tg-031e">Visit Link</th>
+        <th class="tg-031e">Visit Domain</th>
+        <th class="tg-031e">piwik</th>
+        <th class="tg-031e">piwik number</th>
+        <th class="tg-031e">logoid</th>
+        <th class="tg-031e">free_amount()</th>
+        <th class="tg-031e">bonus</th>
+        <th class="tg-031e">bonus2</th>
+        <th class="tg-031e">bonus3</th>
+        <th class="tg-031e">Currency</th>
+        <th class="tg-031e">liveChat</th>
+        <th class="tg-031e">serverPathFile</th>
+        <th class="tg-031e">Register form</th>
+      </tr>
+{% if landing %}
+    {% for list in landing %}
+      <tr>
+        <td class="tg-031e">{{ list.domen }}</td>
+        <td class="tg-031e">{{ list.server_path }}</td>
+        <td class="tg-031e">{{ list.link }}</td>
+        <td class="tg-031e">{{ list.phoneIsPic }}</td>
+        <td class="tg-031e">{{ list.phoneIsText }}</td>
+        <td class="tg-031e">{{ list.linkPhonePic }}</td>
+        <td class="tg-031e">{{ list.emailIsPic }}</td>
+        <td class="tg-031e">{{ list.emailIsText }}</td>
+        <td class="tg-031e">{{ list.linkEmailPic }}</td>
+        <td class="tg-031e">{{ list.visit }}</td>
+        <td class="tg-031e">{{ list.visitLink }}</td>
+        <td class="tg-031e">{{ list.visitDomain }}</td>
+        <td class="tg-031e">{{ list.piwik }}</td>
+        <td class="tg-031e">{{ list.piwikNumber }}</td>
+        <td class="tg-031e">{{ list.logoId }}</td>
+        <td class="tg-031e">{{ list.freeAmmount }}</td>
+        <td class="tg-031e">{{ list.bonus }}</td>
+        <td class="tg-031e">{{ list.bonus2 }}</td>
+        <td class="tg-031e">{{ list.bonus3 }}</td>
+        <td class="tg-031e">{{ list.currency }}</td>
+        <td class="tg-031e">{{ list.liveChat }}</td>
+        <td class="tg-031e">{{ list.serverPathFile }}</td>
+        <td class="tg-031e">{{ list.regForm }}</td>
+      </tr>
+    {% endfor %}
+{% else %}
+    <center>
+        <li class="uk-text-justify uk-text-large uk-align-center">Records not found!</li>
+        <img src="{% static 'img/homer.png' %}">
+    </center>
+{% endif %}
+    </table>
+
+
+{% endblock %}
