@@ -8,7 +8,7 @@ jQuery(function() {
 
         while((child = child.nextSibling) != null) {
             if (child != th){
-                 index++;
+                index++;
             } else {
                 break;
             }
@@ -21,7 +21,6 @@ jQuery(function() {
            while (((child = child.nextSibling) != null) && (i < index)) {
                i++;
            }
-
            child.remove();
        });
     });

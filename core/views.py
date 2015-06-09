@@ -35,7 +35,7 @@ def about(request):
 @login_required
 def landing(request):
     context = {
-        'landing_filter_form': FilterLandingForm()
+        'landing_filter_form': FilterLandingForm(initial=request.POST)
     }
     if request.method == 'POST':
         filter_params = {}
@@ -52,8 +52,6 @@ def landing(request):
                         filter_params[name] = value
 
             landing = Landing.objects.filter(**filter_params)
-            b = landing.query
-            print b
         else:
             landing = Landing.objects.all()
     else:
@@ -154,7 +152,7 @@ def importFromCSV(request):
 @login_required
 def landing_full(request):
     context = {
-        'landing_filter_form': FilterLandingForm()
+        'landing_filter_form': FilterLandingForm(initial=request.POST)
     }
     if request.method == 'POST':
         filter_params = {}
@@ -177,4 +175,3 @@ def landing_full(request):
         context['landing'] = Landing.objects.all()
 
     return render(request, 'core/full.html', context)
-
