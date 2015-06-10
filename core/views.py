@@ -104,6 +104,8 @@ def landing_create(request):
         return HttpResponseRedirect(
             reverse('landing:landing')
         )
+    else:
+        print form.errors
     return render(request, 'core/add.html', {'form': form})
 
 

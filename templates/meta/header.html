@@ -1,25 +1,30 @@
 {% load static %}
+<style>
+.uk-responsive-height {
+    max-height: 100%;
+    width: 100px;
+}
+</style>
 <nav class="uk-navbar">
     <div class="uk-container uk-container-center">
         <div class="uk-grid">
             <div class="uk-width-1-1">
-                <a class="uk-visible-large" href="/"><img src="{% static 'img/logo.png' %}" class="uk-responsive-height" alt=""/></a>
+                <a class="uk-visible-large uk-responsive-height" href="/"><img src="{% static 'img/logo.png' %}" class="uk-responsive-height" alt=""/></a>
                 <div class="uk-navbar-flip">
                     {% if user.is_authenticated %}
-                        <ul class="uk-list">
-                        <!-- TODO Insert link -->
+                        <ul>
                             {% if user.is_superuser %}
-                                <li><a href="/admin"><div class="uk-icon-medium uk-icon-user"></div> - Admin</a></li>
+                                <li style="display: inline"><a href="/admin"><div class="uk-icon-medium uk-icon-user"></div> - Admin</a></li> |
                             {% endif %}
-                            <li><a href="{% url 'users:profile' %}"><div class="uk-icon-medium uk-icon-user"></div> - Profile</a></li>
-                            <li><a href="{% url 'landing:landing' %}"><div class="uk-icon-medium uk-icon-user"></div> - Statistic</a></li>
-                            <li><a href="{% url 'landing:landing_full' %}"><div class="uk-icon-medium uk-icon-user"></div> - Full page</a></li>
-                            <li><a href="{% url 'landing:landing_create' %}"><div class="uk-icon-medium uk-icon-user"></div> - Add new landing</a></li>
-                            <li><a href="{% url 'landing:importcsv' %}"><div class="uk-icon-medium uk-icon-user"></div> - Import CVS</a></li>
-                            <li><a href="{% url 'logout' %}"><div class="uk-icon-medium uk-icon-user"></div> - Logout</a></li>
+                            <li style="display: inline"><a href="{% url 'users:profile' %}"><div class="uk-icon-medium uk-icon-user"></div> - Profile</a></li> |
+                            <li style="display: inline"><a href="{% url 'landing:landing' %}"><div class="uk-icon-medium uk-icon-user"></div> - Statistic</a></li> |
+                            <li style="display: inline"><a href="{% url 'landing:landing_full' %}"><div class="uk-icon-medium uk-icon-user"></div> - Full page</a></li> |
+                            <li style="display: inline"><a href="{% url 'landing:landing_create' %}"><div class="uk-icon-medium uk-icon-user"></div> - Add new landing</a></li> |
+                            <li style="display: inline"><a href="{% url 'landing:importcsv' %}"><div class="uk-icon-medium uk-icon-user"></div> - Import CVS</a></li> |
+                            <li style="display: inline"><a href="{% url 'logout' %}"><div class="uk-icon-medium uk-icon-user"></div> - Logout</a></li>
                         </ul>
                     {% else %}
-                        <div class="uk-navbar-content uk-hidden-small">
+                        <div class="uk-navbar-content">
                             <form action="{% url 'login' %}" method="POST" class="uk-form uk-margin-remove uk-display-inline-block">
                                 {% csrf_token %}
                                 <input name="username" type="text" placeholder="Login">
@@ -27,6 +32,9 @@
                                 <div class="uk-button-group">
                                     <button class="uk-button uk-button-primary" type="submit">Login</button>
                                     <a href="{% url 'register' %}" class="uk-button uk-button-success">Registration</a>
+                                </div>
+                                <div class="uk-width-1-2">
+                                    <a href="{% url 'password_reset' %}">Forget your password?</a>
                                 </div>
                             </form>
                         </div>

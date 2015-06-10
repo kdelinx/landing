@@ -2,21 +2,162 @@
 {% block title %}New landing{% endblock %}
 {% block base_body %}
     <div class="uk-container uk-container-center">
-        <div class="uk-width-1-1 uk-text-center">
-            <div class="uk-grid">
-                <div class="uk-grid-width-1-1">
+    <div class="uk-width-1-1 uk-text-center">
+        <span class="uk-text-large">Search...</span>
+        <form class="uk-form contact-form" method="POST" action="">
+            {{ form.non_field_errors }}
+            {% csrf_token %}
+            <div class="uk-grid uk-grid-center uk-grid-preserve" data-uk-grid-margin>
+                <div class="uk-width-1-4">
                     <div class="uk-form-row uk-margin-large">
-                        <p class="uk-margin-small-top">
-                            <form class="uk-form " action="" method="post" >
-                                {% csrf_token %}
-                                {{ form.non_field_errors }}
-                                {{ form.as_p }}
-                                <input class="uk-button-primary" type="submit" value="Create" name="submit">
-                            </form>
-                        </p>
+                        <div class="uk-width-1-2">
+                            {{ form.domen.label }} {{ form.domen }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.server_path.label }} {{ form.server_path }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.link.label }} {{ form.link }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.phoneIsPic.label }} <br> {{ form.phoneIsPic }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.phoneIsText.label }} <br> {{ form.phoneIsText }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.emailIsPic.label }} <br> {{ form.emailIsPic }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.emailIsText.label }} <br> {{ form.emailIsText }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.visit.label }} <br> {{ form.visit }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.visitLink.label }} {{ form.visitLink }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.visitDomain.label }} {{ form.visitDomain }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.piwik.label }} <br> {{ form.piwik }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.piwikNumber.label }} {{ form.piwikNumber }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.logoId.label }} <br> {{ form.logoId }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.freeAmmount.label }} <br> {{ form.freeAmmount }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.bonus.label }} <br> {{ form.bonus }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.bonus2.label }} <br> {{ form.bonus2 }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.bonus3.label }} <br> {{ form.bonus3 }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.currency.label }} <br> {{ form.currency }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.liveChat.label }} <br> {{ form.liveChat }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ form.serverPathFile.label }} {{ form.serverPathFile }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4 uk-align-center">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2 uk-container-center">
+                            {{ form.regForm.label }} <br> {{ form.regForm }}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <input class="uk-button uk-button-primary" type="submit" name="submit" value="Create">
+        </form>
     </div>
+</div>
 {% endblock %}

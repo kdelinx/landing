@@ -4,37 +4,150 @@
 {% block base_body %}
 
 <script src="{% static 'js/tableHide.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/tableStyle.css' %}">
 
+
+<div class="uk-container uk-container-center">
     <div class="uk-width-1-1 uk-text-center">
         <span class="uk-text-large">Search...</span>
-        <form class="uk-form" method="post" action="">
+        <form class="uk-form contact-form" method="post" action="">
             {% csrf_token %}
-            {{ landing_filter_form.as_ul }}
+            <div class="uk-grid uk-grid-center uk-grid-preserve" data-uk-grid-margin>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.domen.label }} {{ landing_filter_form.domen }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.server_path.label }} {{ landing_filter_form.server_path }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.link.label }} {{ landing_filter_form.link }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.phoneIsPic.label }} <br> {{ landing_filter_form.phoneIsPic }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.phoneIsText.label }} <br> {{ landing_filter_form.phoneIsText }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.emailIsPic.label }} <br> {{ landing_filter_form.emailIsPic }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.emailIsText.label }} <br> {{ landing_filter_form.emailIsText }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.visit.label }} <br> {{ landing_filter_form.visit }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.piwik.label }} <br> {{ landing_filter_form.piwik }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.piwikNumber.label }} {{ landing_filter_form.piwikNumber }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.logoId.label }} <br> {{ landing_filter_form.logoId }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.freeAmmount.label }} <br> {{ landing_filter_form.freeAmmount }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.bonus.label }} <br> {{ landing_filter_form.bonus }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.bonus2.label }} <br> {{ landing_filter_form.bonus2 }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.bonus3.label }} <br> {{ landing_filter_form.bonus3 }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-4">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.currency.label }} <br> {{ landing_filter_form.currency }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.liveChat.label }} <br> {{ landing_filter_form.liveChat }}
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-width-1-2 uk-align-center">
+                    <div class="uk-form-row uk-margin-large">
+                        <div class="uk-width-1-2">
+                            {{ landing_filter_form.regForm.label }} <br> {{ landing_filter_form.regForm }}
+                        </div>
+                    </div>
+                </div>
+            </div>
             <input class="uk-button uk-button-primary" type="submit" name="submit" value="Show">
         </form>
     </div>
-<br />
-    <!-- padding:10px 1px -->
-<style type="text/css">
-    .tg  {border-collapse:collapse;border-spacing:0;}
-    .tg td{font-family:sans-serif, sans-serif;font-size:8px;padding:auto;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-    .tg th{font-family:sans-serif, sans-serif;font-size:8px;font-weight:normal;padding:auto;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-    .vertical-text {
-        writing-mode:tb-rl;
-        -webkit-transform:rotate(90deg);
-        -moz-transform:rotate(90deg);
-        -o-transform: rotate(90deg);
-        -ms-transform:rotate(90deg);
-        transform: rotate(90deg);
-        white-space:nowrap;
-        bottom:0;
-        width:20px;
-        height:20px;
-        max-width: 15px;
-    }
-</style>
+</div>
 
-    <table class="tg">
+<br />
+
+    <table class="tg" style="margin-left: 35px;">
       <tr>
         <th class="tg-031e"><input type="checkbox"></th>
         <th class="tg-031e"><input type="checkbox"></th>
@@ -93,7 +206,7 @@
         <td class="tg-031e">{{ list.id }}</td>
         <td class="tg-031e">{{ list.domen }}</td>
         <td class="tg-031e">{{ list.server_path }}</td>
-        <td class="tg-031e">{{ list.link }}</td>
+        <td class="tg-031e"><a href="{{ list.link }}">{{ list.link }}</a></td>
         <td class="tg-031e">
             {% if list.phoneIsPic %}
                 <center>+</center>
@@ -212,6 +325,5 @@
     </center>
 {% endif %}
     </table>
-
 
 {% endblock %}

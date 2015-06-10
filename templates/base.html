@@ -9,17 +9,14 @@
     <title>
         {% block title %}Statistic landing page{% endblock %}
     </title>
-    {% compress css %}
         <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}" />
-    {% endcompress css %}
-    {% compress js %}
+
         <script src="{% static 'js/jquery.min.js' %}"></script>
         <script src="{% static 'js/uikit.min.js' %}"></script>
         <script src="{% static 'js/jquery-ui.js' %}"></script>
         <script src="{% static 'js/modernizr.js' %}"></script>
         <script src="{% static 'js/components/notify.min.js' %}"></script>
         <script src="{% static 'js/components/grid.min.js' %}"></script>
-    {% endcompress js %}
 </head>
 <body>
 {% include 'meta/header.html' %}

@@ -26,7 +26,7 @@ class Landing(models.Model):
         max_length=255,
     )
     link = models.URLField(
-        _('Link path'),
+        _('Link URI'),
         blank=False,
         null=False,
         max_length=255,
