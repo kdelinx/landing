@@ -171,6 +171,9 @@ def landing_full(request):
                         filter_params[name] = value
 
             context['landing'] = Landing.objects.filter(**filter_params)
+            # context['distinct_landing'] = Landing.objects.values('domen').distinct()
+            # context['server_path_from_domen'] = Landing.objects.filter(domen=request.POST.get('domen')).\
+            #                                                             values('server_path')
         else:
             context['landing'] = Landing.objects.all()
     else:

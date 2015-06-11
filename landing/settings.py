@@ -44,6 +44,9 @@ AUTHENTICATION_BACKENDS = (
         'django.contrib.auth.backends.RemoteUserBackend',
         'django.contrib.auth.backends.ModelBackend',
 )
+STATICFILES_FINDERS = (
+    'compressor.finders.CompressorFinder',
+)
 MESSAGE_TAGS = {
     msg_.DEBUG: '',
     msg_.ERROR: 'uk-alert-danger',
@@ -82,7 +85,7 @@ LOGIN_REDIRECT_URL = '/profile/'
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
 LOGIN_AFTER_SIGNUP = True
-COMPRESS_ENABLE = True
+COMPRESS_ENABLED = True
 CACHE = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',

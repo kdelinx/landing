@@ -107,16 +107,28 @@ class CreateLanding(forms.ModelForm):
                   'liveChat', 'serverPathFile', 'regForm',)
 
 class FilterLandingForm(forms.Form):
-    domen = forms.CharField(
-        label='Domain',
-        max_length=255,
+    domen = forms.ModelChoiceField(
+        label='Domen',
+        queryset=Landing.objects.values('domen').distinct(),
         required=False,
+        widget=forms.Select(),
     )
-    server_path = forms.CharField(
+    # domen = forms.CharField(
+    #     label='Domain',
+    #     max_length=255,
+    #     required=False,
+    # )
+    server_path = forms.ModelChoiceField(
         label='Server path',
-        max_length=255,
+        queryset=Landing.objects.filter(domen=domen).values('server_path'),
         required=False,
+        widget=forms.Select,
     )
+    # server_path = forms.CharField(
+    #     label='Server path',
+    #     max_length=255,
+    #     required=False,
+    # )
     link = forms.CharField(
         label='Link URI',
         max_length=255,

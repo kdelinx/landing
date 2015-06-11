@@ -1,139 +1,154 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load compress %}
 {% block title %}Full page landings{% endblock %}
 {% block base_body %}
 
-<script src="{% static 'js/tableHide.js' %}"></script>
-<link rel="stylesheet" href="{% static 'css/tableStyle.css' %}">
+{% compress js %}
+    <script src="{% static 'js/tableHide.js' %}"></script>
+{% endcompress js %}
 
+{% compress css %}
+    <link rel="stylesheet" href="{% static 'css/tableStyle.css' %}">
+{% endcompress css %}
 
 <div class="uk-container uk-container-center">
-    <div class="uk-width-1-1 uk-text-center">
+    <div class="uk-width-1-1 uk-text-center uk-text-small">
         <span class="uk-text-large">Search...</span>
         <form class="uk-form contact-form" method="post" action="">
             {% csrf_token %}
             <div class="uk-grid uk-grid-center uk-grid-preserve" data-uk-grid-margin>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
+{#                            <select>#}
+{#                                {% for foo in distinct_landing %}#}
+{#                                    <option>{{ foo.domen }}</option>#}
+{#                                {% endfor %}#}
+{#                            </select>#}
                             {{ landing_filter_form.domen.label }} {{ landing_filter_form.domen }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
+{#                            <select>#}
+{#                                {% for bar in server_path_from_domen %}#}
+{#                                    <option>{{ bar.server_path }}</option>#}
+{#                                {% endfor %}#}
+{#                            </select>#}
                             {{ landing_filter_form.server_path.label }} {{ landing_filter_form.server_path }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.link.label }} {{ landing_filter_form.link }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.phoneIsPic.label }} <br> {{ landing_filter_form.phoneIsPic }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.phoneIsText.label }} <br> {{ landing_filter_form.phoneIsText }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.emailIsPic.label }} <br> {{ landing_filter_form.emailIsPic }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.emailIsText.label }} <br> {{ landing_filter_form.emailIsText }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.visit.label }} <br> {{ landing_filter_form.visit }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.piwik.label }} <br> {{ landing_filter_form.piwik }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.piwikNumber.label }} {{ landing_filter_form.piwikNumber }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.logoId.label }} <br> {{ landing_filter_form.logoId }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.freeAmmount.label }} <br> {{ landing_filter_form.freeAmmount }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.bonus.label }} <br> {{ landing_filter_form.bonus }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.bonus2.label }} <br> {{ landing_filter_form.bonus2 }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.bonus3.label }} <br> {{ landing_filter_form.bonus3 }}
                         </div>
                     </div>
                 </div>
                 <div class="uk-width-1-4">
-                    <div class="uk-form-row uk-margin-large">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.currency.label }} <br> {{ landing_filter_form.currency }}
                         </div>
                     </div>
                 </div>
-                <div class="uk-width-1-2">
-                    <div class="uk-form-row uk-margin-large">
+                <div class="uk-width-1-3">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.liveChat.label }} <br> {{ landing_filter_form.liveChat }}
                         </div>
                     </div>
                 </div>
-                <div class="uk-width-1-2 uk-align-center">
-                    <div class="uk-form-row uk-margin-large">
+                <div class="uk-width-1-3 uk-align-center">
+                    <div class="uk-form-row uk-margin-small">
                         <div class="uk-width-1-2">
                             {{ landing_filter_form.regForm.label }} <br> {{ landing_filter_form.regForm }}
                         </div>
