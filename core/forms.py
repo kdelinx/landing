@@ -107,21 +107,10 @@ class CreateLanding(forms.ModelForm):
                   'liveChat', 'serverPathFile', 'regForm',)
 
 class FilterLandingForm(forms.Form):
-    DOMEN_CHOICES = ((i['domen'], i['domen']) for i in Landing.objects.values('domen').distinct())
-    domen = forms.ChoiceField(
-        label='Domen',
-        choices=DOMEN_CHOICES,
-        required=False,
-    )
-    SERVER_PATH_CHOICES = ((k['server_path'], k['server_path']) for k in Landing.objects.filter(domen=domen).values('server_path'))
-    server_path = forms.ChoiceField(
-        label='Server path',
-        choices=SERVER_PATH_CHOICES,
-        required=False,
-    )
-    # server_path = forms.CharField(
+    # SERVER_PATH_CHOICES = ((k['server_path'], k['server_path']) for k in Landing.objects.filter(domen=domen).values('server_path'))
+    # server_path = forms.ChoiceField(
     #     label='Server path',
-    #     max_length=255,
+    #     choices=SERVER_PATH_CHOICES,
     #     required=False,
     # )
     link = forms.CharField(
@@ -203,3 +192,13 @@ class FilterLandingForm(forms.Form):
         label='Register form',
         required=False,
     )
+
+    def __init__(self, *args, **kwargs):
+        super(FilterLandingForm, self).__init__(*args, **kwargs)
+        domain_value = self.data.get('domen')
+        self.fields['domen'] = forms.ChoiceField(choices=[(o['domen'], o['domen']) \
+                                    for o in Landing.objects.values('domen').distinct()],
+                                                required=False)
+        self.fields['server_path'] = forms.ChoiceField(choices=[(i['server_path'], i['server_path']) \
+                                    for i in Landing.objects.filter(domen=domain_value).values('server_path')],
+                                                       required=False)

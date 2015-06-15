@@ -34,12 +34,10 @@ def about(request):
 
 @login_required
 def landing(request):
-    context = {
-        'landing_filter_form': FilterLandingForm(initial=request.POST)
-    }
+    context = {}
     if request.method == 'POST':
         filter_params = {}
-        form = FilterLandingForm(request.POST)
+        form = FilterLandingForm(request.POST, initial=request.POST)
         if form.is_valid():
             for name, value in form.cleaned_data.iteritems():
                 if name not in form.data:
@@ -52,10 +50,14 @@ def landing(request):
                         filter_params[name] = value
 
             landing = Landing.objects.filter(**filter_params)
+            context['landing_filter_form'] = form
         else:
             landing = Landing.objects.all()
+
+            context['landing_filter_form'] = form
     else:
         landing = Landing.objects.all()
+        context['landing_filter_form'] = FilterLandingForm()
 
     page = request.GET.get('page', '1')
     paginator = Paginator(landing, 50)
@@ -153,12 +155,10 @@ def importFromCSV(request):
 
 @login_required
 def landing_full(request):
-    context = {
-        'landing_filter_form': FilterLandingForm(initial=request.POST)
-    }
+    context = {}
     if request.method == 'POST':
         filter_params = {}
-        form = FilterLandingForm(request.POST)
+        form = FilterLandingForm(request.POST, initial=request.POST)
         if form.is_valid():
             for name, value in form.cleaned_data.iteritems():
                 if name not in form.data:
@@ -171,12 +171,12 @@ def landing_full(request):
                         filter_params[name] = value
 
             context['landing'] = Landing.objects.filter(**filter_params)
-            # context['distinct_landing'] = Landing.objects.values('domen').distinct()
-            # context['server_path_from_domen'] = Landing.objects.filter(domen=request.POST.get('domen')).\
-            #                                                             values('server_path')
         else:
             context['landing'] = Landing.objects.all()
+
+        context['landing_filter_form'] = form
     else:
         context['landing'] = Landing.objects.all()
+        context['landing_filter_form'] = FilterLandingForm()
 
     return render(request, 'core/full.html', context)
