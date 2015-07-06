@@ -7,6 +7,7 @@ class UploadCSVFile(forms.ModelForm):
         model = Landing
         fields = ('fileing',)
 
+
 class CreateLanding(forms.ModelForm):
     domen = forms.CharField(
         label='Domain',
@@ -84,6 +85,23 @@ class CreateLanding(forms.ModelForm):
         label='Currency',
         required=False,
     )
+    affid = forms.BooleanField(
+        label='affid',
+        required=False
+    )
+    tracker_id = forms.BooleanField(
+        label='tracker_id',
+        required=False
+    )
+    refferer = forms.BooleanField(
+        label='refferer',
+        required=False
+    )
+    errors = forms.CharField(
+        label='errors',
+        max_length=512,
+        required=False
+    )
     liveChat = forms.BooleanField(
         label='liveChat()',
         required=False,
@@ -104,15 +122,11 @@ class CreateLanding(forms.ModelForm):
                   'linkPhonePic', 'emailIsPic', 'emailIsText', 'linkEmailPic', \
                   'visit', 'visitLink', 'visitDomain', 'piwik', 'piwikNumber', \
                   'logoId', 'freeAmmount', 'bonus', 'bonus2', 'bonus3', 'currency', \
-                  'liveChat', 'serverPathFile', 'regForm',)
+                  'affid', 'tracker_id', 'refferer', 'liveChat', 'serverPathFile', \
+                  'errors', 'regForm',)
+
 
 class FilterLandingForm(forms.Form):
-    # SERVER_PATH_CHOICES = ((k['server_path'], k['server_path']) for k in Landing.objects.filter(domen=domen).values('server_path'))
-    # server_path = forms.ChoiceField(
-    #     label='Server path',
-    #     choices=SERVER_PATH_CHOICES,
-    #     required=False,
-    # )
     link = forms.CharField(
         label='Link URI',
         max_length=255,
@@ -182,6 +196,23 @@ class FilterLandingForm(forms.Form):
     liveChat = forms.BooleanField(
         label='liveChat()',
         required=False,
+    )
+    affid = forms.BooleanField(
+        label='affid',
+        required=False
+    )
+    tracker_id = forms.BooleanField(
+        label='tracker_id',
+        required=False
+    )
+    refferer = forms.BooleanField(
+        label='refferer',
+        required=False
+    )
+    errors = forms.CharField(
+        label='errors',
+        max_length=512,
+        required=False
     )
     serverPathFile = forms.CharField(
         label='Server path file',

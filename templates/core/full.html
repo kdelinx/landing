@@ -188,6 +188,9 @@
         <th class="tg-031e"><input type="checkbox"></th>
         <th class="tg-031e"><input type="checkbox"></th>
         <th class="tg-031e"><input type="checkbox"></th>
+        <th class="tg-031e"><input type="checkbox"></th>
+        <th class="tg-031e"><input type="checkbox"></th>
+        <th class="tg-031e"><input type="checkbox"></th>
       </tr>
       <tr>
         <th class="tg-031e">№</th>
@@ -212,6 +215,9 @@
         <th class="tg-031e vertical-text">bonus3</th>
         <th class="tg-031e vertical-text">Currency</th>
         <th class="tg-031e vertical-text">liveChat</th>
+        <th class="tg-031e vertical-text">affid</th>
+        <th class="tg-031e vertical-text">tracker_id</th>
+        <th class="tg-031e vertical-text">refferer</th>
         <th class="tg-031e">serverPathFile</th>
         <th class="tg-031e vertical-text">Register form</th>
       </tr>
@@ -318,6 +324,27 @@
         </td>
         <td class="tg-031e">
             {% if list.liveChat %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.affid %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.tracker_id %}
+                <center>+</center>
+            {% else %}
+                <center>-</center>
+            {% endif %}
+        </td>
+        <td class="tg-031e">
+            {% if list.referer %}
                 <center>+</center>
             {% else %}
                 <center>-</center>

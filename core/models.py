@@ -107,6 +107,18 @@ class Landing(models.Model):
         _('Live chat function'),
         default=False,
     )
+    affid = models.BooleanField(
+        _('affid'),
+        default=False
+    )
+    tracker_id = models.BooleanField(
+        _('trackerId'),
+        default=False
+    )
+    referer = models.BooleanField(
+        _('referer_default'),
+        default=False
+    )
     serverPathFile = models.CharField(
         _('Server file path'),
         max_length=255,
@@ -114,6 +126,11 @@ class Landing(models.Model):
     regForm = models.BooleanField(
         _('Registration forms'),
         default=False,
+    )
+    errors = models.CharField(
+        _('Errors'),
+        max_length=512,
+        default=''
     )
 
     class Meta:
