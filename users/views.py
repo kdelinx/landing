@@ -18,7 +18,7 @@ def profile(request):
     user = User.objects.get(id=request.user.id)
     context = {
         'profile': user,
-        'logs': Log.objects.filter(user=user).order_by('id')[:5]
+        'logs': Log.objects.filter(user=user).order_by('-id')[:5]
     }
     return render(request, 'users/profile.html', context)
 
